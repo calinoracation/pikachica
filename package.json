@@ -1,0 +1,20 @@
+{
+  "name": "pikachica",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo \"Build complete\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calinoracation/pikachica.git"
+  },
+  "author": "calinoracation@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/calinoracation/pikachica/issues"
+  },
+  "homepage": "https://github.com/calinoracation/pikachica#readme"
+}
