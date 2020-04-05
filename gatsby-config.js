@@ -14,14 +14,6 @@ module.exports = {
     `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-react-helmet`,
     {
-      resolve: `gatsby-source-stripe`,
-      options: {
-        objects: ['Sku'],
-        secretKey: process.env.STRIPE_SECRET_KEY,
-        downloadFiles: false,
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,

@@ -1,12 +1,4 @@
-# Settings in the [build] context are global and are applied to all contexts
-# unless otherwise overridden by more specific contexts.
 [build]
-  # Directory to change to before starting a build.
-  # This is where we will look for package.json/.nvmrc/etc.
   base = "/"
-
   publish = "public/"
-
-[template.environment]
-  GATSBY_STRIPE_PUBLISHABLE_KEY = "Add your Stripe publishable key here: pk_test_xxx"
-  STRIPE_SECRET_KEY = "Add your Stripe secret key here: sk_test_xxx"
+  command = "npm run build"
