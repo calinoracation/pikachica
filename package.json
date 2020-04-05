@@ -1,20 +1,52 @@
 {
-  "name": "pikachica",
+  "name": "pikachica.com",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "echo \"Build complete\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "format": "prettier --write \"src/**/*.js\"",
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/calinoracation/pikachica.git"
   },
-  "author": "calinoracation@gmail.com",
+  "dependencies": {
+    "@stripe/stripe-js": "^1.0.1",
+    "@types/prop-types": "^15.7.3",
+    "@types/react": "^16.9.32",
+    "@types/react-dom": "^16.9.6",
+    "@types/react-helmet": "^5.0.15",
+    "@types/styled-components": "^5.0.1",
+    "babel-plugin-styled-components": "^1.10.7",
+    "gatsby": "^2.19.19",
+    "gatsby-image": "^2.2.41",
+    "gatsby-plugin-manifest": "^2.2.41",
+    "gatsby-plugin-offline": "^2.2.10",
+    "gatsby-plugin-react-helmet": "^3.1.22",
+    "gatsby-plugin-sharp": "^2.4.5",
+    "gatsby-plugin-styled-components": "^3.2.1",
+    "gatsby-plugin-typescript": "^2.3.1",
+    "gatsby-source-filesystem": "^2.1.48",
+    "gatsby-source-stripe": "^2.2.2",
+    "gatsby-transformer-sharp": "^2.3.14",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
+    "styled-components": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/prettier": "^2.0.0",
+    "prettier": "^1.19.1"
+  },
+  "author": "@calinoracation",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/calinoracation/pikachica/issues"
   },
-  "homepage": "https://github.com/calinoracation/pikachica#readme"
+  "homepage": "https://pikachica.com"
 }
