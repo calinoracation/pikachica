@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components"
 
-import CoverArt from '../components/Image';
+import CoverArt from '../components/CoverArt';
 import SEO from '../components/SEO';
 
 const Body = styled.div`
