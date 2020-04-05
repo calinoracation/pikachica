@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     title: `Pika Chica - Hot Tacos`,
     description: `Fresh, authentic Al Pastor tacos.`,
-    author: `@calinoracation`,
+    author: `@atpikachica`,
   },
   plugins: [
     `gatsby-plugin-typescript`,
