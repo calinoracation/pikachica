@@ -2,30 +2,36 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql, useStaticQuery } from 'gatsby'
+import { useIntl, IntlShape } from "gatsby-plugin-intl"
 
-function SEO({ description, lang, meta, keywords, title }) {
+function getPageMessage({ key, intl, pageName } : { key: string; intl: IntlShape, pageName: string }) {
+  const pageSpecificMessage = intl.formatMessage({ id: `pages.${pageName}.${key}`});
+
+  return pageSpecificMessage ?? intl.formatMessage({ id: `pages.default.${key}`});
+}
+
+function SEO({ pageName = 'default', lang, keywords, meta }) {
+  const intl = useIntl();
+
   const { site: { siteMetadata } } = useStaticQuery(graphql`
     query SEOMetadataQuery {
       site {
         siteMetadata {
           title
-          description
           author
         }
       }
     }
   `);
-
-  const siteDescription = description ?? siteMetadata.description;
+  
+  const siteDescription = getPageMessage({ key: 'description', intl, pageName });
+  const siteTitle = getPageMessage({ key: 'title', intl, pageName });
 
   return (
     <Helmet
-      htmlAttributes={{
-        lang,
-      }}
       defer={false}
-      title={title}
-      titleTemplate={`%s | ${siteMetadata.title}`}
+      title={siteTitle}
+      titleTemplate={`%s | ${intl.formatMessage({ id: 'siteMetadata.title' })}`}
       meta={[
         {
           name: `description`,
@@ -33,7 +39,7 @@ function SEO({ description, lang, meta, keywords, title }) {
         },
         {
           property: `og:title`,
-          content: title,
+          content: siteTitle,
         },
         {
           property: `og:description`,
@@ -49,11 +55,11 @@ function SEO({ description, lang, meta, keywords, title }) {
         },
         {
           name: `twitter:creator`,
-          content: siteMetadata.author,
+          content: intl.formatMessage({ id: 'siteMetadata.author' }),
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: siteTitle,
         },
         {
           name: `twitter:description`,
@@ -74,7 +80,6 @@ function SEO({ description, lang, meta, keywords, title }) {
 }
 
 SEO.defaultProps = {
-  lang: `en`,
   meta: [],
   keywords: [],
 }
@@ -84,7 +89,7 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.array,
   keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 }
 
 export default SEO
