@@ -1,5 +1,5 @@
-import React from 'react';
-import styled, { createGlobalStyle } from "styled-components"
+import React, { useState } from 'react';
+import styled, { createGlobalStyle, keyframes } from "styled-components"
 import { useIntl } from "gatsby-plugin-intl"
 import { graphql, useStaticQuery } from 'gatsby'
 
@@ -8,7 +8,7 @@ import Logo from '../components/Logo';
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background: #fffcf6;
+    background: #ff6600;
     margin: 0;
   }
 `
@@ -33,31 +33,75 @@ const Header = styled.header`
   }
 `;
 
+const fadeIn = keyframes`
+0% {
+  max-height: 0px;
+  visibility: hidden;
+}
+
+100% {
+  max-height: 600px;
+  visibility: visible;
+}
+`;
+
+const fadeOut = keyframes`
+0% {
+  max-height: 600px;
+  visibility: visible;
+}
+
+100% {
+  max-height: 0px;
+  visibility: hidden;
+}
+`;
+
 const MenuList = styled.ul`
-  box-shadow: -3px 5px 2px -1px rgba(255, 102, 0, 1);
-  display: grid;
+  box-shadow: 0px 2px 6px 1px rgba(84,237,9, .7);
   grid-template-columns: 1fr 1fr;
-  grid-row-gap: 0px;
-  grid-column-gap: 0px;
-  background: #fff9ef;
-  border: 2px dotted #554c4c;
-  border-radius: 20px;
+  grid-row-gap: 1px;
+  grid-column-gap: 1px;
+  background: #fff;
+  border-width: 1px 0;
+  border-style: solid;
+  border-color: #fff;
+  display: grid;
+  animation-name: ${props => props.visible ? fadeIn : fadeOut};
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
   overflow: hidden;
-  margin: 20px 20px;
+  margin: 0;
   padding: 0;
   list-style: none;
 `;
 
+const TacoButton = styled.button`
+  background: #fff;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0px 2px 6px 1px rgba(84,237,9, .7);
+  align-self: center;
+  margin: 40px 0;
+  padding: 12px 25px;
+  font-size: 1.2rem;
+`;
+
 const MenuItem = styled.li`
   img {
+    display: flex;
     width: 100%;
-    height: 120px;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
   }
 `;
 
 export default function HomePage() {
   const intl = useIntl();
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
   const { menuItem1, menuItem2, menuItem3 } = useStaticQuery(graphql`
   query {
     menuItem1: file(relativePath: { eq: "taco_hand.jpg" }) {
@@ -82,7 +126,10 @@ export default function HomePage() {
         <Header>
           <Logo />          
         </Header>
-        <MenuList>
+        <TacoButton onClick={() => setIsMenuVisible(!isMenuVisible)}>
+          Order Tacos
+        </TacoButton>
+        <MenuList visible={isMenuVisible}>
           <MenuItem>
             <img src={menuItem1.publicURL} />
           </MenuItem>
@@ -95,7 +142,7 @@ export default function HomePage() {
           <MenuItem>
             <img src={menuItem1.publicURL} />
           </MenuItem>
-        </MenuList>
+        </MenuList>       
       </Body>
     </>
   );

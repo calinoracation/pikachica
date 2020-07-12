@@ -40,7 +40,6 @@ const MenuList = styled.ul`
   grid-row-gap: 0px;
   grid-column-gap: 0px;
   background: #fff9ef;
-  border: 2px dotted #554c4c;
   border-radius: 20px;
   overflow: hidden;
   margin: 20px 20px;
