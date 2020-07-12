@@ -1,16 +1,20 @@
 {
   "siteMetadata": {
     "title": "Pika Chica - Hot Tacos",
-    "author": "@atpikachica"
+    "author": "@atpikachica",
+    "tacos": "stuff"
+  },  
+  "common": {
+    "order": "Order Tacos"
   },  
   "pages": {
     "default": {
       "title": "Home",
       "description": "Fresh, authentic Al Pastor tacos."    
-    },
+    },    
     "menu": {
       "title": "Menu",
       "description": "Our menu"
     }
-  }
+  }  
 }

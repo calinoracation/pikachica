@@ -62,10 +62,10 @@ const MenuList = styled.ul`
   grid-template-columns: 1fr 1fr;
   grid-row-gap: 1px;
   grid-column-gap: 1px;
-  background: #fff;
+  background: #ff6600;
   border-width: 1px 0;
   border-style: solid;
-  border-color: #fff;
+  border-color: #ff6600;
   display: grid;
   animation-name: ${props => props.visible ? fadeIn : fadeOut};
   animation-duration: 0.3s;
@@ -81,13 +81,25 @@ const MenuList = styled.ul`
 
 const TacoButton = styled.button`
   background: #fff;
-  border: none;
+  border: 2px solid #ff6600;
   border-radius: 30px;
-  box-shadow: 0px 2px 6px 1px rgba(84,237,9, .7);
+  box-shadow: 0px 0px 4px 2px rgba(84,237,9, .4);
   align-self: center;
   margin: 40px 0;
   padding: 12px 25px;
   font-size: 1.2rem;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-radius: 30px;
+    border: 1px solid #554c4c;
+  }
 `;
 
 const MenuItem = styled.li`
@@ -103,6 +115,7 @@ export default function HomePage() {
   const intl = useIntl();
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const { menuItem1, menuItem2, menuItem3 } = useStaticQuery(graphql`
+  
   query {
     menuItem1: file(relativePath: { eq: "taco_hand.jpg" }) {
       publicURL
@@ -127,7 +140,7 @@ export default function HomePage() {
           <Logo />          
         </Header>
         <TacoButton onClick={() => setIsMenuVisible(!isMenuVisible)}>
-          Order Tacos
+          {intl.formatMessage({ id: 'common.order' })}
         </TacoButton>
         <MenuList visible={isMenuVisible}>
           <MenuItem>

@@ -3,11 +3,14 @@
     "title": "Pika Chica - Tacos Calientes",
     "author": "@atpikachica"
   },  
+  "common": {
+    "order": "Pedir tacos"
+  },  
   "pages": {
     "default": {
       "title": "Hogar",
       "description": "Tacos frescos y auténticos de Al Pastor."    
-    },
+    },    
     "menu": {
       "title": "Menú",
       "description": "Nuestro menú"
