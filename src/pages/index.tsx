@@ -83,26 +83,13 @@ const Header = styled.header`
 export default function HomePage() {
   const intl = useIntl();
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const { menuItem1, menuItem2, menuItem3 } = useStaticQuery(graphql`
-  
-  query {
-    menuItem1: file(relativePath: { eq: "taco_hand.jpg" }) {
-      publicURL
+  const { fireworks } = useStaticQuery(graphql`
+    query {
+      fireworks: file(relativePath: { eq: "fireworks.svg" }) {
+        publicURL
+      }
     }
-
-    menuItem2: file(relativePath: { eq: "on_banana_leave.jpg" }) {
-      publicURL
-    }
-
-    menuItem3: file(relativePath: { eq: "with_pineapple.jpg" }) {
-      publicURL
-    }
-
-    animatedFireworks: file(relativePath: { eq: "fireworks.svg" }) {
-      publicURL
-    }
-  }
-`);
+  `);
 
   return (
     <>
@@ -122,6 +109,9 @@ export default function HomePage() {
             <BorderSegment color="#b8c0c6" />
           </Border>  
         </BorderContainer>
+        <div style={{ background: '#000' }}>
+        <img src={fireworks.publicURL} />
+        </div>
       </Body>
     </>
   );
